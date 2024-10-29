@@ -22,7 +22,7 @@ composer require shiwildy/sencrypt
         $decrypted = SEncrypt::decrypt($encrypted, $password);
         echo "Decrypted: " . $decrypted . "\n\n";
 
-    } catch (RuntimeException $e) {
+    } catch (Exception $e) {
         echo "An error occurred: " . $e->getMessage() . "\n";
     }
 ?>

@@ -1,5 +1,5 @@
 <?php
-    include "src/sencrypt.php";
+    include "src/SEncrypt.php";
 
     $plaintext = "Hello, just testing..";
     $password = "secret";
@@ -11,7 +11,7 @@
         $decrypted = SEncrypt::decrypt($encrypted, $password);
         echo "Decrypted: " . $decrypted . "\n\n";
 
-    } catch (RuntimeException $e) {
+    } catch (Exception $e) {
         echo "An error occurred: " . $e->getMessage() . "\n";
     }
 
