@@ -56,14 +56,14 @@ class SEncrypt {
             );
 
             if ($encrypted === false) {
-                throw new Exception('Encryption failed.');
+                throw new \Exception('Encryption failed.');
             }
 
             // Combine salt, iv, encrypted then base64 encode
             return base64_encode($salt . $iv . $encrypted);
 
         } catch (Exception $e) {
-            throw new Exception($e->getMessage());
+            throw new \Exception($e->getMessage());
         }
     }
     
@@ -80,7 +80,7 @@ class SEncrypt {
             // Decode base64
             $combined = base64_decode($encryptedBase64, true);
             if ($combined === false) {
-                throw new Exception('Cannot decode base64.');
+                throw new \Exception('Cannot decode base64.');
             }
 
             // Extract salt, iv, encrypted from combined
@@ -89,7 +89,7 @@ class SEncrypt {
             $ciphertext = substr($combined, self::KEY_LENGTH + self::IV_LENGTH);
 
             if ($salt === false || $iv === false || $ciphertext === false) {
-                throw new Exception('Encrypted format is invalid.');
+                throw new \Exception('Encrypted format is invalid.');
             }
 
             // Derive decryption key
@@ -112,12 +112,12 @@ class SEncrypt {
             );
             
             if ($decrypted === false) {
-                throw new Exception('Decryption failed.');
+                throw new \Exception('Decryption failed.');
             }
             
             return $decrypted;
         } catch (Exception $e) {
-            throw new Exception($e->getMessage());
+            throw new \Exception($e->getMessage());
         }
     }
 }
