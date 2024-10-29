@@ -26,7 +26,7 @@ class SEncrypt {
      * @param string $plaintext The data to encrypt.
      * @param string $password The password to derive encryption keys.
      * @return string Base64-encoded encrypted data.
-     * @throws RuntimeException If encryption fails.
+     * @throws Exception If encryption fails.
      */
     public static function encrypt(string $plaintext, string $password): string {
         try {
@@ -56,14 +56,14 @@ class SEncrypt {
             );
 
             if ($encrypted === false) {
-                throw new RuntimeException('Encryption failed.');
+                throw new Exception('Encryption failed.');
             }
 
             // Combine salt, iv, encrypted then base64 encode
             return base64_encode($salt . $iv . $encrypted);
 
         } catch (Exception $e) {
-            throw new RuntimeException($e->getMessage());
+            throw new Exception($e->getMessage());
         }
     }
     
@@ -73,14 +73,14 @@ class SEncrypt {
      * @param string $encryptedBase64 The Base64-encoded encrypted data.
      * @param string $password The password to derive decryption keys.
      * @return string The decrypted plaintext.
-     * @throws RuntimeException If decryption fails.
+     * @throws Exception If decryption fails.
      */
     public static function decrypt(string $encryptedBase64, string $password): string {
         try {
             // Decode base64
             $combined = base64_decode($encryptedBase64, true);
             if ($combined === false) {
-                throw new RuntimeException('Cannot decode base64.');
+                throw new Exception('Cannot decode base64.');
             }
 
             // Extract salt, iv, encrypted from combined
@@ -89,7 +89,7 @@ class SEncrypt {
             $ciphertext = substr($combined, self::KEY_LENGTH + self::IV_LENGTH);
 
             if ($salt === false || $iv === false || $ciphertext === false) {
-                throw new RuntimeException('Encrypted format is invalid.');
+                throw new Exception('Encrypted format is invalid.');
             }
 
             // Derive decryption key
@@ -112,12 +112,12 @@ class SEncrypt {
             );
             
             if ($decrypted === false) {
-                throw new RuntimeException('Decryption failed.');
+                throw new Exception('Decryption failed.');
             }
             
             return $decrypted;
         } catch (Exception $e) {
-            throw new RuntimeException($e->getMessage());
+            throw new Exception($e->getMessage());
         }
     }
 }
