@@ -1,0 +1,35 @@
+{
+    "name": "shiwildy/sencrypt",
+    "description": "A secure and simple encryption library using SHA-512, AES-256-CBC, and BASE64.",
+    "license": "MIT",
+    "keywords": [
+        "encryption",
+        "encrypt",
+        "sha",
+        "sha512",
+        "cryptography",
+        "aes",
+        "openssl",
+        "crypto",
+        "encryptor"
+    ],
+    "type": "library",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "ShiWildy\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Wildy Sheverando",
+            "email": "hai@shiwildy.com",
+            "homepage": "https://github.com/shiwildy.git"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "version": "1.0"
+}
