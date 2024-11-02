@@ -28,8 +28,5 @@
             "email": "hai@shiwildy.com",
             "homepage": "https://github.com/shiwildy.git"
         }
-    ],
-    "minimum-stability": "stable",
-    "prefer-stable": true,
-    "version": "1.0"
+    ]
 }
