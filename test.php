@@ -1,5 +1,6 @@
 <?php
-    include "src/sencrypt.php";
+    require "vendor/autoload.php";
+    use ShiWildy\SEncrypt;
 
     $plaintext = "Hello, just testing..";
     $password = "secret";
